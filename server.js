@@ -1,6 +1,4 @@
 const express = require('express')
-const apiRoutes = require('./routes/apiRoutes.js')
-const htmlRoutes = require('./routes/htmlRoutes.js')
 const { join } = require('path')
 
 const app = express()
@@ -8,8 +6,8 @@ const app = express()
 app.use(express.static(join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use('/api', apiRoutes)
-app.use('/', htmlRoutes)
+app.use('/api', require('./routes/apiRoutes.js'))
+app.use('/', require('./routes/htmlRoutes.js'))
 
 
 
